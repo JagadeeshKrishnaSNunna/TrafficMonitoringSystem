@@ -36,7 +36,7 @@ public class App
         public void flatMap(JsonObject value, Collector<JsonObject> out) throws Exception {
             final String url= "https://my-deployment-315ae5.es.us-central1.gcp.cloud.es.io:9243/criminalrecords/_search?q=license:"+value.get("license");
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor("elastic","EIIqQKfCtNLSsnOHJtHuxDw1"));
+            restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor("elastic","<KEY>"));
             String result = restTemplate.getForObject(url, String.class);
             JsonObject json= (new JsonParser().parse(result).getAsJsonObject());
             String st=json.get("hits").getAsJsonObject().get("total").getAsJsonObject().get("value").toString();
